@@ -1,9 +1,12 @@
-export default function Card() {
+import Fetch from "../Fetch";
+
+export default function Card({ pokemonName }) {
   return (
     <div className="card-box">
-      <div className="img-placeholder">Image PlaceHolder</div>
-      <img src="" alt="" className="card-image" />
-      <p className="card-title">Card Name Placeholder</p>
+      <div className="img-placeholder">
+        <Fetch pokemonName={pokemonName} />
+      </div>
+      <p className="card-title">{pokemonName}</p>
     </div>
   );
 }
