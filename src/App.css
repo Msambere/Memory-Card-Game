@@ -1,0 +1,37 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 15vh 1fr 5vh;
+}
+
+* {
+  border: 1px dotted black;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.gameboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-box {
+  height: 35vh;
+  width: 20vh;
+  padding: 1rem;
+}
+
+.img-placeholder {
+  width: 90%;
+  height: 75%;
+  background-color: blueviolet;
+}
