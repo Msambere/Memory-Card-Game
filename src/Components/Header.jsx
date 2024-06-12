@@ -1,6 +1,6 @@
 import Scorecard from "./ScoreCard";
 
-export default function Header() {
+export default function Header({ currentScore, bestScore }) {
   return (
     <div className="header-container">
       <div className="title-container">
@@ -9,7 +9,7 @@ export default function Header() {
           Test your memory. Click each card once and only once.
         </p>
       </div>
-      <Scorecard />
+      <Scorecard currentScore={currentScore} bestScore={bestScore} />
     </div>
   );
 }

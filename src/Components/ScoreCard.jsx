@@ -1,8 +1,8 @@
-export default function Scorecard() {
+export default function Scorecard({ currentScore, bestScore }) {
   return (
     <div className="scorecard">
-      <div className="currentScore">Current Score: N/A</div>
-      <div className="bestScore">Best Score: N/A</div>
+      <div className="currentScore">Current Score: {currentScore}</div>
+      <div className="bestScore">Best Score: {bestScore}</div>
     </div>
   );
 }

@@ -21,6 +21,7 @@
 .gameboard {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -30,7 +31,7 @@
   padding: 1rem;
 }
 
-.img-placeholder {
+.img-holder {
   width: 90%;
   height: 75%;
   background-color: blueviolet;

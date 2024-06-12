@@ -9,8 +9,6 @@ const Fetch = ({ pokemonName }) => {
       })
       .then((data) => {
         let imageData = data.sprites.other.dream_world;
-        console.log(imageData);
-        console.log(imageData["front_default"]);
         setPhoto(imageData["front_default"]);
       });
   }, []);
