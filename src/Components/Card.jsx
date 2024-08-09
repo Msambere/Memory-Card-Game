@@ -1,4 +1,5 @@
 import Fetch from "../Fetch";
+import CapitalizeName from "./CapitalizeName";
 
 export default function Card({ pokemonName, handleCardClick }) {
   return (
@@ -6,7 +7,7 @@ export default function Card({ pokemonName, handleCardClick }) {
       <div className="img-holder">
         <Fetch pokemonName={pokemonName} />
       </div>
-      <p className="card-title">{pokemonName}</p>
+      <CapitalizeName pokemanName={pokemonName} />
     </div>
   );
 }

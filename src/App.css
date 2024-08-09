@@ -6,33 +6,65 @@
   box-sizing: border-box;
   display: grid;
   grid-template-rows: 15vh 1fr 5vh;
-}
-
-* {
-  border: 1px dotted black;
+  gap: 2rem;
+  justify-content: center;
+  justify-items: center;
 }
 
 .header-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .gameboard {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
 }
 
 .card-box {
   height: 35vh;
   width: 20vh;
   padding: 1rem;
+  border-radius: 10px;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-holder {
   width: 90%;
   height: 75%;
-  background-color: blueviolet;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 33vw;
+  height: fit-content;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #d6d9dc;
+  border-radius: 20px;
+  text-align: center;
+  padding: 2rem;
+}
+
+button {
+  padding: 1rem;
+  border-radius: 20px;
 }
