@@ -1,6 +1,7 @@
 import Scorecard from "./ScoreCard";
+import ChangeGameDifficulty from "./ChangeGameDifficulty";
 
-export default function Header({ currentScore, bestScore }) {
+function Header({ currentScore, handleChangeDifficultyClick, bestScore }) {
   return (
     <div className="header-container">
       <div className="title-container">
@@ -9,7 +10,14 @@ export default function Header({ currentScore, bestScore }) {
           Test your memory. Click each card once and only once.
         </h2>
       </div>
-      <Scorecard currentScore={currentScore} bestScore={bestScore} />
+      <div className="header-right">
+        <Scorecard currentScore={currentScore} bestScore={bestScore} />
+        <ChangeGameDifficulty
+          handleChangeDifficultyClick={handleChangeDifficultyClick}
+        />
+      </div>
     </div>
   );
 }
+
+export default Header;

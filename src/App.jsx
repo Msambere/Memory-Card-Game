@@ -5,20 +5,44 @@ import Footer from "./Components/Footer";
 import CardLoader from "./Components/CardLoader";
 import { pokemonList } from "./assets/PokemonList";
 import GameOverModal from "./Components/GameOverModal";
+import DifficultyModal from "./Components/DifficultyModal.jsx";
+import ChangeGameDifficulty from "./Components/ChangeGameDifficulty.jsx";
 
 function App() {
   const [clickedList, setClickedList] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [gameStatus, setGameStatus] = useState("won");
+  const [difficultyLevel, setDifficultyLevel] = useState(6);
+  const [gameBoardColumns, setGameBoardColumns] = useState(3);
+
   const highestScore = pokemonList.length;
-  const dialog = document.querySelector(".modal");
+  const statusDialog = document.querySelector(".status-modal");
+  const difficultyDialog = document.querySelector("#difficulty-modal");
+  const difficultyForm = document.getElementById("difficulty-form");
+
+  //Handler functions
+  const handleChangeDifficultyClick = () => {
+    difficultyDialog.showModal();
+  };
+
+  const handleLevelChangeSubmit = (event) => {
+    event.preventDefault();
+    let level = document.querySelector('input[name="level"]:checked').value;
+    console.log(level);
+    setDifficultyLevel(level);
+    console.log("UseState: ", difficultyLevel);
+    difficultyDialog.close();
+    setGameBoardColumns(Math.floor(parseInt(level) / 2));
+    resetGameClick();
+    setBestScore(0);
+  };
 
   const resetGameClick = () => {
     setCurrentScore(0);
     setClickedList([]);
     setGameStatus("playing");
-    dialog.close();
+    statusDialog.close();
   };
 
   const handleCardClick = (e) => {
@@ -26,7 +50,7 @@ function App() {
     let pokemon = cardBox.querySelector("h3").textContent;
     if (clickedList.includes(pokemon)) {
       setGameStatus("lost");
-      dialog.showModal();
+      statusDialog.showModal();
     } else {
       if (currentScore + 1 > bestScore) {
         setBestScore(bestScore + 1);
@@ -34,26 +58,30 @@ function App() {
       setCurrentScore(currentScore + 1);
       setClickedList([...clickedList, pokemon]);
       console.log(clickedList);
-      console.log(dialog);
     }
     if (clickedList.length + 1 == highestScore) {
       setGameStatus("won");
-      dialog.showModal();
+      statusDialog.showModal();
     }
   };
 
   return (
     <>
-      <Header currentScore={currentScore} bestScore={bestScore} />
-      <div className="gameboard">
-        <CardLoader
-          renderList={pokemonList}
-          setClickedList={setClickedList}
-          clickedList={clickedList}
-          handleCardClick={handleCardClick}
-        />
-      </div>
+      <Header
+        currentScore={currentScore}
+        bestScore={bestScore}
+        handleChangeDifficultyClick={handleChangeDifficultyClick}
+      />
+      <CardLoader
+        renderList={pokemonList}
+        setClickedList={setClickedList}
+        clickedList={clickedList}
+        handleCardClick={handleCardClick}
+        difficultyLevel={difficultyLevel}
+        gameBoardColumns={gameBoardColumns}
+      />
       <GameOverModal gameStatus={gameStatus} resetGameClick={resetGameClick} />
+      <DifficultyModal handleLevelChangeSubmit={handleLevelChangeSubmit} />
       <Footer />
     </>
   );
