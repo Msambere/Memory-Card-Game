@@ -1,7 +1,12 @@
 import Scorecard from "./ScoreCard";
 import ChangeGameDifficulty from "./ChangeGameDifficulty";
 
-function Header({ currentScore, handleChangeDifficultyClick, bestScore }) {
+function Header({
+  currentScore,
+  handleChangeDifficultyClick,
+  bestScore,
+  difficultyLevel,
+}) {
   return (
     <div className="header-container">
       <div className="title-container">
@@ -13,6 +18,7 @@ function Header({ currentScore, handleChangeDifficultyClick, bestScore }) {
       <div className="header-right">
         <Scorecard currentScore={currentScore} bestScore={bestScore} />
         <ChangeGameDifficulty
+          difficultyLevel={difficultyLevel}
           handleChangeDifficultyClick={handleChangeDifficultyClick}
         />
       </div>

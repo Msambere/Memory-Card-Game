@@ -1,30 +1,28 @@
 import Card from "./Card";
+import { pokemonList } from "../assets/PokemonList";
 
-function CardLoader({
-  renderList,
-  handleCardClick,
-  difficultyLevel,
-  gameBoardColumns,
-}) {
-  // Create list with the pokemon in random order
-  function randomizeRenderList(renderList) {
-    let randomizedList = [];
+function CardLoader({ renderList, handleCardClick, gameBoardColumns }) {
+  //Shuffle cards
+  const shuffleRenderList = (list) => {
+    let shuffledList = [];
     let usedIndexNums = [];
-    let newList = renderList;
-    while (randomizedList.length != difficultyLevel) {
-      let randomIndex = Math.floor(Math.random() * renderList.length);
+    while (shuffledList.length != list.length) {
+      let randomIndex = Math.floor(Math.random() * list.length);
       if (usedIndexNums.includes(randomIndex)) {
         continue;
       } else {
         usedIndexNums.push(randomIndex);
-        randomizedList.push(newList[randomIndex]);
+        shuffledList.push(list[randomIndex]);
       }
     }
-    return randomizedList;
-  }
-  let newRenderList = randomizeRenderList(renderList);
+    return shuffledList;
+  };
+  //Main function
+  let cardList = shuffleRenderList(renderList);
+  console.log("Current set card order: ");
+  console.table(cardList);
 
-  const cards = newRenderList.map((pokemon) => {
+  const cards = cardList.map((pokemon) => {
     return (
       <Card
         key={pokemon.id}

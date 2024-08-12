@@ -4,8 +4,11 @@
   margin: 0;
   font-size: 16px;
   box-sizing: border-box;
+}
+
+.visuals {
   display: grid;
-  grid-template-rows: 15vh 1fr 5vh;
+  grid-template-rows: repeat(3, fit-content);
   gap: 2rem;
   justify-content: center;
   justify-items: center;
@@ -13,6 +16,7 @@
 
 .header-container {
   width: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,7 +25,6 @@
 .gameBoard {
   width: fit-content;
   display: grid;
-  /* grid-template-columns: repeat(var(--columns), 1fr); */
   gap: 2rem;
 }
 
@@ -72,4 +75,23 @@ button {
 .modal-button {
   border-radius: 20px;
   padding: 1rem;
+}
+
+legend {
+  font-size: 2.5rem;
+}
+
+.level-choice {
+  padding: 0.5rem;
+}
+
+label {
+  font-size: 2rem;
+}
+
+.form-buttons {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
