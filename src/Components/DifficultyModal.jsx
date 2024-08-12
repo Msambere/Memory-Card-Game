@@ -14,17 +14,17 @@ function DifficultyModal({ handleLevelChangeSubmit, handleCancelClick }) {
                 value="6"
                 defaultChecked
               />
-              <label htmlFor="easy">Easy(6 cards)</label>
+              <label htmlFor="easy"> Easy(6 cards)</label>
             </div>
 
             <div className="level-choice">
               <input type="radio" id="medium" name="level" value="8" />
-              <label htmlFor="medium">Medium (8 cards)</label>
+              <label htmlFor="medium"> Medium (8 cards)</label>
             </div>
 
             <div className="level-choice">
               <input type="radio" id="hard" name="level" value="10" />
-              <label htmlFor="louie">Hard (10 cards)</label>
+              <label htmlFor="louie"> Hard (10 cards)</label>
             </div>
           </fieldset>
           <div className="form-buttons">
