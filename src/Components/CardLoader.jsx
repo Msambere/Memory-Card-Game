@@ -19,8 +19,6 @@ function CardLoader({ renderList, handleCardClick, gameBoardColumns }) {
   };
   //Main function
   let cardList = shuffleRenderList(renderList);
-  console.log("Current set card order: ");
-  console.table(cardList);
 
   const cards = cardList.map((pokemon) => {
     return (

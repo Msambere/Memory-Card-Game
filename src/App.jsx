@@ -5,10 +5,9 @@ import Footer from "./Components/Footer";
 import CardLoader from "./Components/CardLoader";
 import { pokemonList } from "./assets/PokemonList";
 import GameOverModal from "./Components/GameOverModal";
-import DifficultyModal from "./Components/DifficultyModal.jsx";
+import LevelSelector from "./Components/LevelSelector.jsx";
 
 const randomizeRenderList = (difficultyLevel) => {
-  console.log(difficultyLevel);
   let randomizedList = [];
   let usedIndexNums = [];
   while (randomizedList.length != difficultyLevel) {
@@ -44,18 +43,21 @@ function App() {
     difficultyDialog && difficultyDialog.showModal();
   };
 
-  const handleLevelChangeSubmit = (event) => {
-    const difficultyDialog = document.getElementById("difficulty-modal");
+  const handleLevelChangeSubmit = (e) => {
+    // const difficultyDialog = document.getElementById("difficulty-modal");
     event.preventDefault();
-    let level = document.querySelector('input[name="level"]:checked').value;
+    let oldLevel = document.querySelector(".clicked");
+    console.log("Old level:");
+    console.log(oldLevel);
+    oldLevel.classList.remove("clicked");
+    //Removed clicked class from old level
+    e.target.classList.add("clicked");
+    // let level = document.querySelector('input[name="level"]:checked').value;
+    let level = e.target.value;
     setDifficultyLevel(level);
-    console.log("Difficulty level UseState: ", difficultyLevel);
-    difficultyDialog.close();
+    // difficultyDialog.close();
     setGameBoardColumns(Math.floor(parseInt(level) / 2));
-    console.log("gameBoardColumns UseState: ", gameBoardColumns);
     setRenderList(randomizeRenderList(level));
-    console.log("Post Level Change list: ");
-    console.table(renderList);
     setCurrentScore(0);
     setClickedList([]);
     setGameStatus("playing");
@@ -77,7 +79,6 @@ function App() {
   };
 
   const handleCardClick = (e) => {
-    console.log("Card clicked");
     let pokemon = e.target.closest(".card-box").querySelector("h3").textContent;
     if (clickedList.includes(pokemon)) {
       setGameStatus("lost");
@@ -100,10 +101,6 @@ function App() {
   return (
     <>
       <GameOverModal gameStatus={gameStatus} resetGameClick={resetGameClick} />
-      <DifficultyModal
-        handleLevelChangeSubmit={handleLevelChangeSubmit}
-        handleCancelClick={handleCancelClick}
-      />
       <div className="visuals">
         <Header
           currentScore={currentScore}
@@ -111,6 +108,7 @@ function App() {
           handleChangeDifficultyClick={handleChangeDifficultyClick}
           difficultyLevel={difficultyLevel}
         />
+        <LevelSelector handleLevelChangeSubmit={handleLevelChangeSubmit} />
         <CardLoader
           renderList={renderList}
           handleCardClick={handleCardClick}

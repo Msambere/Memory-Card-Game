@@ -1,5 +1,4 @@
 function DifficultyModal({ handleLevelChangeSubmit, handleCancelClick }) {
-  console.log("Difficulty modal was rendered");
   return (
     <div className="gameDifficulty">
       <dialog className="modal" id="difficulty-modal">

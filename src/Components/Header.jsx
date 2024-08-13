@@ -16,10 +16,10 @@ function Header({
       </div>
       <div className="header-right">
         <Scorecard currentScore={currentScore} bestScore={bestScore} />
-        <ChangeGameDifficulty
+        {/* <ChangeGameDifficulty
           difficultyLevel={difficultyLevel}
           handleChangeDifficultyClick={handleChangeDifficultyClick}
-        />
+        /> */}
       </div>
     </div>
   );
